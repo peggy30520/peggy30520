@@ -55,7 +55,7 @@ class MODEL:
     # 'W' : a list of weight matrices. E.g., W[0] is the weight matrix connected input layer and 1st hidden layer.
     def __init__(self, network_struct, learning_rate, bias=None):
         # Local variables
-        self.network_struct = networ_struct
+        self.network_struct = network_struct
         self.learning_rate = learning_rate 
         self.W = initWeights(network_struct) # Initialize weight metrices
 
