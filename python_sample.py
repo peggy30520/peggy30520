@@ -351,7 +351,7 @@ if __name__ == "__main__":
     train_y_part_P30 = train_y_part[:, :valid_num]
     train_y_part_P70 = train_y_part[:, valid_num:]
     
-    nn_struct = [CONST.input_dim(), 'aaa', 3, CONST.output_dim()]
+    nn_struct = [CONST.input_dim(), 28, 3, CONST.output_dim()]
     HW1_NN    = MODEL(network_struct=nn_struct, learning_rate=0.05)
     
     print("Start training a model.\n")
