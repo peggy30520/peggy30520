@@ -329,7 +329,7 @@ if __name__ == "__main__":
     generatePkFromSource()
     
     print("Load data from .pickle.")
-    with open('train-image.pickle', 'rb') as fp: train_x_part = pickle.load(fp)
+    with open('train-images.pickle', 'rb') as fp: train_x_part = pickle.load(fp)
     with open('train-labels.pickle', 'rb') as fp: train_y_part = pickle.load(fp)
     with open('test-images.pickle', 'rb') as fp: test_x_part = pickle.load(fp)
     with open('test-labels.pickle', 'rb') as fp: test_y_part = pickle.load(fp)
