@@ -103,7 +103,7 @@ def makeDataBatches(batch_size, data_x_part, data_y_part):
     
     while True:
         if (start+batch_size) > data_x_part.shape[1]:
-            continue
+            break #continue -> break
         index_list.append( (start, start+batch_size) )
         start += batch_size
     index_list.append( (start, data_x_part.shape[1]) )
@@ -204,7 +204,7 @@ def forwardPropagate(model, data_x_part):
 
 def backwardPropagate(model, Intermediates, truth_y):
     # Prepare 'Z' and 'A' for convenient notation which would be used later.
-    Z, A = {}, []
+    Z, A = {}, {} #[]->{}
     for i in range(len(Intermediates)): 
         Z[i-1] = Intermediates[i]['pre_act']
         A[i-1] = Intermediates[i]['post_act']
@@ -338,7 +338,7 @@ if __name__ == "__main__":
     # Shuffle data
     shuffle      = numpy.random.permutation(train_x_part.shape[1])
     train_x_part = train_x_part[:, shuffle]
-    train_y_part = train_x_part[:, shuffle]
+    train_y_part = train_y_part[:, shuffle]     #train_x_part => train_y_part
     shuffle      = numpy.random.permutation(test_x_part.shape[1])
     test_x_part  = test_x_part[:, shuffle]
     test_y_part  = test_y_part[:, shuffle]
@@ -346,7 +346,7 @@ if __name__ == "__main__":
     print("Generate training set & validation set.")
     # Splitting TRAINING data into validation set (30%) and training set (70%)
     valid_num        = int(train_x_part.shape[1] * CONST.v_t_ratio())
-    train_x_part_P30 = train_x_part[:, valid_num:]
+    train_x_part_P30 = train_x_part[:, :valid_num] #valid_num: => :valid_num
     train_x_part_P70 = train_x_part[:, valid_num:]
     train_y_part_P30 = train_y_part[:, :valid_num]
     train_y_part_P70 = train_y_part[:, valid_num:]
